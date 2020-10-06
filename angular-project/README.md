@@ -1,3 +1,5 @@
-# Angular
+# angular priject
 
-	css của login & register đang giống nhau
+	- css của login & register giống nhau
+
+	- npm i @angular-devkit/build-angular
