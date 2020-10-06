@@ -1,0 +1,70 @@
+<div class="content">
+    <div class="card-body mx-auto">
+        <h3 class="card-title mt-3 text-center">Register</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" formControlName="username" placeholder="Username"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && f.username.errors">
+                    <div *ngIf="f.username.errors.required">Username {{errorMsg}}</div>
+                </div>
+            </div>
+            <!--
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control" formControlName="fullName" placeholder="Full name"
+                    [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && f.fullName.errors">
+                    <div *ngIf="f.fullName.errors.required">Full name {{errorMsg}}</div>
+                </div>
+            </div>
+            -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="text" class="form-control" formControlName="email" placeholder="Email address"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
+                    <div *ngIf="f.email.errors.required">Email address {{errorMsg}}</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address!</div>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" formControlName="password" placeholder="Password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div class="invalid-feedback" *ngIf="submitted && f.password.errors">
+                    <div *ngIf="f.password.errors.required">Password {{errorMsg}}</div>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" class="form-control" formControlName="passwordConfirm"
+                    placeholder="Password confirm" [ngClass]="{ 'is-invalid': submitted && f.passwordConfirm.errors }">
+                <div class="d-block invalid-feedback" *ngIf="submitted">
+                    <div *ngIf="f.passwordConfirm.errors else other_case">
+                        <div *ngIf="f.passwordConfirm.errors.required">Password confirm {{errorMsg}}</div>
+                    </div>
+                    <ng-template #other_case>
+                        <div *ngIf="f.passwordConfirm.value != f.password.value">Password does not match</div>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="form-group action">
+                <button type="submit" [disabled]="true" class="btn btn-primary btn-block">Create Account</button>
+                <img *ngIf="isLoading" [src]="loadingGif" />
+            </div>
+            <p class="text-center">Have an account? <a [routerLink]="['/login']">Log In</a> </p>
+        </form>
+    </div>
+</div>

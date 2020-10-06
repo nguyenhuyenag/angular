@@ -1,0 +1,36 @@
+<div id="content">
+    <h1 class="text-center">Datepicker</h1>
+    <div class="form-content">
+        <pre class="text-center">
+        from: {{f.fromDay.value.day}}/{{f.fromDay.value.month}}/{{f.fromDay.value.year}}
+        to: {{f.toDay.value.day}}/{{f.toDay.value.month}}/{{f.toDay.value.year}}
+        {{format}}: {{dateByFormat}}
+        </pre>
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Từ ngày</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="fromDay" ngbDatepicker
+                                #d="ngbDatepicker">
+                            <button class="btn btn-outline-secondary btn-calendar" (click)="d.toggle()"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Đến ngày</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="toDay" ngbDatepicker
+                                #dd="ngbDatepicker">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary btn-calendar" (click)="dd.toggle()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

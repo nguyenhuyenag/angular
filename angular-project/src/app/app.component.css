@@ -1,0 +1,54 @@
+#main {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.router {
+  width: 100%;
+  min-height: 800px;
+  /* padding: 5px; */
+  position: absolute;
+  /* background-color: white; */
+}
+
+.is-active, .topnav a:focus {
+  background-color: #4CAF50 !important;
+}
+.topnav, .dropdown-menu {
+  background-color: #5f5f5f;
+}
+.topnav ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+.topnav a:hover {
+  background-color:black;
+}
+.dropdown-menu {
+  border: none;
+  display: none;
+  position: absolute;
+  border-radius: 0 !important;
+}
+.dropdown-menu li {
+  width: 100%;
+}
+.topnav ul li {
+  position: relative;
+  display: inline-block;
+}
+.topnav a {
+  color:white;
+  display: block;
+  font-size: 17px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px 15px !important;
+  font-family: "Segoe UI",Arial,sans-serif;
+}
+.topnav ul li:hover .dropdown-menu {
+  display: block;
+}

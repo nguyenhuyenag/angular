@@ -1,0 +1,77 @@
+body {
+    height: 100%;
+    /* background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
+    /* background-color:#201F25; */
+}
+
+/* component content*/
+#content {
+    min-height: 700px;
+    background-color:white !important;
+}
+
+.f-left {
+    float: left;
+}
+.f-right {
+    float: right;
+}
+.pointer {
+    cursor: pointer !important;
+}
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    left: 0;
+    top: 55%;
+    z-index: 1;
+    content: "";
+    width: 100%;
+    position: absolute;
+    border-bottom: 1px solid #ddd;
+}
+
+/* calendar */
+.custom-select {
+    width: 93px !important;
+}
+.btn-calendar {
+    width: 2.75rem;
+    background-size: 23px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0px !important;
+    background-image: url('assets/images/input_calendar.png') !important;
+}
+/* end calendar */
+
+/* particles */
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/* end particles */
+.error {
+    color: #D50000;
+}

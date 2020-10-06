@@ -1,1 +1,1 @@
-# angular
+# JavaScript

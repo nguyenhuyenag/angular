@@ -1,0 +1,22 @@
+._404 {
+    z-index: 2;
+    height: 250px;
+    font-size: 220px;
+    position: relative;
+    letter-spacing: 15px;
+    display: inline-block;
+}
+._1 {
+    text-align: center;
+    display: block;
+    position: relative;
+    letter-spacing: 12px;
+    font-size: 4em;
+    line-height: 80%;
+}
+._2 {
+    text-align: center;
+    display: block;
+    position: relative;
+    font-size: 20px;
+}

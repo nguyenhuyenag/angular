@@ -1,0 +1,23 @@
+.content {
+    height: auto;
+    margin: 0 auto;
+    margin-top: 5%;
+    max-width: 350px;
+    border-radius: 0.1em;
+    background-color:#F7F7F7;
+    border: 1px solid lightgray;
+}
+.action * {
+    display: block;
+    margin: 1% auto;
+}
+.profile-card {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto 50px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: white;
+}
