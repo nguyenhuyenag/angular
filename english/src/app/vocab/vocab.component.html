@@ -1,10 +1,10 @@
 <div style="width: 700px; text-align: center;">
     <div class="col-lg-7 mx-auto">
         <div class="bg-white rounded-lg shadow-sm p-5">
-            <h4 class="modal-title">{{word}}</h4>
+            <h4 class="modal-title">{{word | uppercase }}</h4>
             <br/>
-            <p class="alert alert-success">Phát âm</p>
-            <p class="alert alert-success">Nghĩa</p>
+            <p (click)="showPro()" class="alert alert-success pointer">{{pro}}</p>
+            <p (click)="showMean()" class="alert alert-success pointer">{{mean}}</p>
             <button (click)="get()" class="btn btn-primary btn-block rounded-pill subscribe shadow-sm">Next</button>
         </div>
     </div>

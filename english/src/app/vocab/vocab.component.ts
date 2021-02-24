@@ -11,22 +11,34 @@ export class VocabComponent implements OnInit {
 
   constructor(private service: VocabService) { }
 
-  public vocab: Vocab;
-
-  word: any;
+  pro: string;
+  word: string;
+  mean: string;
+  vocab: Vocab;
 
   ngOnInit(): void {
     this.get();
   }
 
+  public init() {
+    this.mean = "Mean";
+    this.pro = "Pronounce";
+  }
+
   public get() {
+    this.init();
     this.service.randomVocab().subscribe(data => {
       this.vocab = data;
-      this.word = this.vocab.word.toUpperCase();
-      // console.log(this.vocab.id);
-    }, error => {
-      // console.log(error);
+      this.word = this.vocab.word;
     });
+  }
+
+  public showPro() {
+    this.pro = this.vocab.pronounce;
+  }
+
+  public showMean() {
+    this.mean = this.vocab.mean;
   }
 
 }
