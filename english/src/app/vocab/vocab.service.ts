@@ -12,10 +12,10 @@ export class VocabService {
 
   constructor(private http: HttpClient) { }
 
-  private random_vocab = environment.apiUrl + "/api/random-vocab";
+  private random_vocab = environment.apiUrl + "/api/random-vocab" + "?flag=";
 
-  public randomVocab(): Observable<any> {
-    return this.http.get(this.random_vocab).pipe(map(data => data));
+  public randomVocab(flag: string): Observable<any> {
+    return this.http.get(this.random_vocab + flag).pipe(map(data => data));
   }
 
 }

@@ -17,7 +17,7 @@ export class VocabComponent implements OnInit {
   vocab: Vocab;
 
   ngOnInit(): void {
-    this.get();
+    this.getVocab("0");
   }
 
   public init() {
@@ -25,9 +25,9 @@ export class VocabComponent implements OnInit {
     this.pro = "Pronounce";
   }
 
-  public get() {
+  public getVocab(flag: string) {
     this.init();
-    this.service.randomVocab().subscribe(data => {
+    this.service.randomVocab(flag).subscribe(data => {
       this.vocab = data;
       this.word = this.vocab.word;
     });
