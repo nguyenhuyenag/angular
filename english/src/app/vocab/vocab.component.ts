@@ -12,7 +12,7 @@ export class VocabComponent implements OnInit {
   constructor(private service: VocabService) { }
 
   pro: string;
-  word: string;
+  word: string = "word";
   mean: string;
   vocab: Vocab;
 
