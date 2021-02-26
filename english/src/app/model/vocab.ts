@@ -2,5 +2,5 @@ export class Vocab {
     id: number;
     word: string;
     pronounce: string;
-    mean: string;
+    translate: string;
 }

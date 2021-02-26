@@ -12,17 +12,17 @@ export class VocabComponent implements OnInit {
   constructor(private service: VocabService) { }
 
   pro: string;
-  word: string = "word";
-  mean: string;
   vocab: Vocab;
+  word: string = "word";
+  translate: string;
 
   ngOnInit(): void {
     this.getVocab("0");
   }
 
   public init() {
-    this.mean = "Mean";
     this.pro = "Pronounce";
+    this.translate = "Translate";
   }
 
   public getVocab(flag: string) {
@@ -38,7 +38,7 @@ export class VocabComponent implements OnInit {
   }
 
   public showMean() {
-    this.mean = this.vocab.mean;
+    this.translate = this.vocab.translate;
   }
 
 }
