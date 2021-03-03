@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { VocabService } from './vocab.service';
 import { Vocab } from '../model/vocab';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 'ArrowRight',
+}
 
 @Component({
   selector: 'app-vocab',
@@ -11,6 +15,13 @@ export class VocabComponent implements OnInit {
 
   constructor(private service: VocabService) { }
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.key === KEY_CODE.RIGHT_ARROW) {
+      this.getVocab("1");
+    }
+  }
+
   pro: string;
   vocab: Vocab;
   word: string = "word";
@@ -20,12 +31,12 @@ export class VocabComponent implements OnInit {
     this.getVocab("0");
   }
 
-  public init() {
+  init() {
     this.pro = "Pronounce";
     this.translate = "Translate";
   }
 
-  public getVocab(flag: string) {
+  getVocab(flag: string) {
     this.init();
     this.service.randomVocab(flag).subscribe(data => {
       this.vocab = data;
@@ -33,11 +44,11 @@ export class VocabComponent implements OnInit {
     });
   }
 
-  public showPro() {
+  showPro() {
     this.pro = this.vocab.pronounce;
   }
 
-  public showMean() {
+  showMean() {
     this.translate = this.vocab.translate;
   }
 
