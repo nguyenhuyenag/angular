@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class VocabService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  private random_vocab = environment.apiUrl + "/api/random-vocab" + "?flag=";
+    private random_vocab = environment.apiUrl + "/api/random-vocab" + "?flag=";
 
-  public randomVocab(flag: string): Observable<any> {
-    return this.http.get(this.random_vocab + flag).pipe(map(data => data));
-  }
+    public randomVocab(flag: string): Observable<any> {
+        return this.http.get(this.random_vocab + flag).pipe(map(data => data));
+    }
 
 }

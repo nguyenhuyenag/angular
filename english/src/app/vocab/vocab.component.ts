@@ -3,53 +3,64 @@ import { VocabService } from './vocab.service';
 import { Vocab } from '../model/vocab';
 
 export enum KEY_CODE {
-  RIGHT_ARROW = 'ArrowRight',
+    RIGHT_ARROW = 'ArrowRight',
 }
 
 @Component({
-  selector: 'app-vocab',
-  templateUrl: './vocab.component.html',
-  styleUrls: ['./vocab.component.css']
+    selector: 'app-vocab',
+    templateUrl: './vocab.component.html',
+    styleUrls: ['./vocab.component.css']
 })
 export class VocabComponent implements OnInit {
 
-  constructor(private service: VocabService) { }
+    constructor(private service: VocabService) { }
 
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    if (event.key === KEY_CODE.RIGHT_ARROW) {
-      this.getVocab("1");
+    @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+        if (event.key === KEY_CODE.RIGHT_ARROW) {
+            this.getVocab("1");
+        }
     }
-  }
 
-  pro: string;
-  vocab: Vocab;
-  word: string = "word";
-  translate: string;
+    pro: string;
+    vocab: Vocab;
+    word: string = "word";
+    translate: string;
+    eng_vie: string = "English";
+    
+    flag:boolean = true;
 
-  ngOnInit(): void {
-    this.getVocab("0");
-  }
+    ngOnInit(): void {
+        this.getVocab("0");
+    }
 
-  init() {
-    this.pro = "Pronounce";
-    this.translate = "Translate";
-  }
+    init() {
+        this.pro = "Pronounce";
+        this.translate = "Translate";
+    }
 
-  getVocab(flag: string) {
-    this.init();
-    this.service.randomVocab(flag).subscribe(data => {
-      this.vocab = data;
-      this.word = this.vocab.word;
-    });
-  }
+    public getVocab(flag: string) {
+        this.init();
+        this.service.randomVocab(flag).subscribe(data => {
+            this.vocab = data;
+            this.word = this.vocab.word;
+        });
+    }
 
-  showPro() {
-    this.pro = this.vocab.pronounce;
-  }
+    public showPro() {
+        this.pro = this.vocab.pronounce;
+    }
 
-  showMean() {
-    this.translate = this.vocab.translate;
-  }
+    public showMean() {
+        this.translate = this.vocab.translate;
+    }
+
+    public change() {
+        this.flag = !this.flag;
+        this.eng_vie = this.flag ? "English" : "Vietnamese";
+        // if (this.flag) {
+        //     this.eng_vie = ""
+        // }
+    }
 
 }

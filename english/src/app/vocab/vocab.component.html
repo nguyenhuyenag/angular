@@ -2,11 +2,14 @@
     <div class="col-lg-7 mx-auto">
         <div class="bg-white rounded-lg shadow-sm p-5">
             <h4 class="modal-title">{{word | titlecase }}</h4>
-            <!-- <h4 class="modal-title">{{word | uppercase }}</h4> -->
             <br />
-            <!-- <br/> -->
             <p (click)="showPro()" class="alert alert-success pointer">{{pro}}</p>
             <p (click)="showMean()" class="alert alert-success pointer">{{translate}}</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="change()">
+                <label class="form-check-label" for="flexCheckDefault">{{eng_vie}}</label>
+            </div>
+            <br />
             <button (click)="getVocab('1')" class="btn btn-primary btn-block rounded-pill subscribe shadow-sm">Next</button>
         </div>
     </div>
