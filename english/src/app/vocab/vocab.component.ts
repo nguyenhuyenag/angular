@@ -26,7 +26,6 @@ export class VocabComponent implements OnInit {
     vocab: Vocab;
     word: string = "word";
     translate: string;
-    eng_vie: string = "English";
     
     flag:boolean = true;
 
@@ -43,7 +42,7 @@ export class VocabComponent implements OnInit {
         this.init();
         this.service.randomVocab(flag).subscribe(data => {
             this.vocab = data;
-            this.word = this.vocab.word;
+            this.handleChange();
         });
     }
 
@@ -55,12 +54,18 @@ export class VocabComponent implements OnInit {
         this.translate = this.vocab.translate;
     }
 
+    public handleChange() {
+        if (!this.flag) {
+            let tmp = this.vocab.word;
+            this.vocab.word = this.vocab.translate;
+            this.vocab.translate = tmp;
+        }
+        this.word = this.vocab.word;
+    }
+
     public change() {
         this.flag = !this.flag;
-        this.eng_vie = this.flag ? "English" : "Vietnamese";
-        // if (this.flag) {
-        //     this.eng_vie = ""
-        // }
+        this.handleChange();
     }
 
 }
