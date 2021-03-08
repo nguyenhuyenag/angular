@@ -3,7 +3,7 @@ import { VocabService } from './vocab.service';
 import { Vocab } from '../model/vocab';
 
 export enum KEY_CODE {
-    T = 80, P = 84,
+    T = 80, P = 84, SPACE = 32,
     RIGHT_ARROW = 'ArrowRight'
 }
 
@@ -37,9 +37,13 @@ export class VocabComponent implements OnInit {
             this.show_trans = !this.show_trans;
             this.showPronoun();
         }
-        if (event.keyCode === KEY_CODE.P) {
+        if (event.keyCode == KEY_CODE.P) {
             this.show_pro = !this.show_pro;
             this.show_trans = !this.show_trans;
+            this.showTranslate();
+        }
+        if (event.keyCode == KEY_CODE.SPACE) {
+            this.showPronoun();
             this.showTranslate();
         }
     }
