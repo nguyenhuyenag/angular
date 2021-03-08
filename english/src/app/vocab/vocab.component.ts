@@ -3,7 +3,8 @@ import { VocabService } from './vocab.service';
 import { Vocab } from '../model/vocab';
 
 export enum KEY_CODE {
-    RIGHT_ARROW = 'ArrowRight',
+    T = 80, P = 84,
+    RIGHT_ARROW = 'ArrowRight'
 }
 
 @Component({
@@ -15,43 +16,68 @@ export class VocabComponent implements OnInit {
 
     constructor(private service: VocabService) { }
 
+    vocab: Vocab;
+
+    pronoun: string;
+    translate: string;
+    word: string = "word";
+
+    flag: boolean = true;
+    show_pro: boolean = false;
+    show_trans: boolean = false;
+
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
+        // console.log(event, event.key, event.keyCode);
         if (event.key === KEY_CODE.RIGHT_ARROW) {
-            this.getVocab("1");
+            this.randomVocab("1");
+        }
+        if (event.keyCode == KEY_CODE.T) {
+            this.show_pro = !this.show_pro;
+            this.show_trans = !this.show_trans;
+            this.showPronoun();
+        }
+        if (event.keyCode === KEY_CODE.P) {
+            this.show_pro = !this.show_pro;
+            this.show_trans = !this.show_trans;
+            this.showTranslate();
         }
     }
 
-    pro: string;
-    vocab: Vocab;
-    word: string = "word";
-    translate: string;
-    
-    flag:boolean = true;
-
     ngOnInit(): void {
-        this.getVocab("0");
+        this.randomVocab("0");
     }
 
-    init() {
-        this.pro = "Pronounce";
+    public reset() {
+        this.pronoun = "Pronounce";
         this.translate = "Translate";
     }
 
-    public getVocab(flag: string) {
-        this.init();
+    public randomVocab(flag: string) {
+        this.reset();
         this.service.randomVocab(flag).subscribe(data => {
             this.vocab = data;
             this.handleChange();
         });
     }
 
-    public showPro() {
-        this.pro = this.vocab.pronounce;
+    public showPronoun() {
+        this.show_pro = !this.show_pro
+        this.pronoun = this.show_pro ? this.vocab.pronounce : "Pronounce";
     }
 
-    public showMean() {
-        this.translate = this.vocab.translate;
+    public showTranslate() {
+        this.show_trans = !this.show_trans;
+        this.translate = this.show_trans ? this.vocab.translate : "Translate";
+    }
+
+    /**
+     * flag: true   =>  eng
+     *       false  =>  vie
+     */
+    public change() {
+        this.flag = !this.flag;
+        this.handleChange();
     }
 
     public handleChange() {
@@ -61,11 +87,6 @@ export class VocabComponent implements OnInit {
             this.vocab.translate = tmp;
         }
         this.word = this.vocab.word;
-    }
-
-    public change() {
-        this.flag = !this.flag;
-        this.handleChange();
     }
 
 }
