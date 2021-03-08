@@ -3,7 +3,7 @@ import { VocabService } from './vocab.service';
 import { Vocab } from '../model/vocab';
 
 export enum KEY_CODE {
-    T = 80, P = 84, SPACE = 32,
+    T = 84, P = 80, SPACE = 32,
     RIGHT_ARROW = 'ArrowRight'
 }
 
@@ -28,18 +28,14 @@ export class VocabComponent implements OnInit {
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-        // console.log(event, event.key, event.keyCode);
+        console.log(event.key, event.keyCode);
         if (event.key === KEY_CODE.RIGHT_ARROW) {
             this.randomVocab("1");
         }
-        if (event.keyCode == KEY_CODE.T) {
-            this.show_pro = !this.show_pro;
-            this.show_trans = !this.show_trans;
+        if (event.keyCode == KEY_CODE.P) {
             this.showPronoun();
         }
-        if (event.keyCode == KEY_CODE.P) {
-            this.show_pro = !this.show_pro;
-            this.show_trans = !this.show_trans;
+        if (event.keyCode == KEY_CODE.T) {
             this.showTranslate();
         }
         if (event.keyCode == KEY_CODE.SPACE) {
@@ -66,13 +62,13 @@ export class VocabComponent implements OnInit {
     }
 
     public showPronoun() {
-        this.show_pro = !this.show_pro
         this.pronoun = this.show_pro ? this.vocab.pronounce : "Pronounce";
+        this.show_pro = !this.show_pro;
     }
 
     public showTranslate() {
-        this.show_trans = !this.show_trans;
         this.translate = this.show_trans ? this.vocab.translate : "Translate";
+        this.show_trans = !this.show_trans;
     }
 
     /**
