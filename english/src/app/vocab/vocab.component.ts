@@ -62,13 +62,13 @@ export class VocabComponent implements OnInit {
     }
 
     public showPronoun() {
-        this.pronoun = this.show_pro ? this.vocab.pronounce : "Pronounce";
         this.show_pro = !this.show_pro;
+        this.pronoun = this.show_pro ? this.vocab.pronounce : "Pronounce";
     }
 
     public showTranslate() {
-        this.translate = this.show_trans ? this.vocab.translate : "Translate";
         this.show_trans = !this.show_trans;
+        this.translate = this.show_trans ? this.vocab.translate : "Translate";
     }
 
     /**
