@@ -49,6 +49,8 @@ export class VocabComponent implements OnInit {
     }
 
     public reset() {
+        this.show_pro = false;
+        this.show_trans = false;
         this.pronoun = "Pronounce";
         this.translate = "Translate";
     }
