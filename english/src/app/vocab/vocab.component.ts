@@ -4,6 +4,7 @@ import { Vocab } from '../model/vocab';
 
 export enum KEY_CODE {
     T = 84, P = 80, SPACE = 32,
+    LEFT_ARROW = 'ArrowLeft',
     RIGHT_ARROW = 'ArrowRight'
 }
 
@@ -28,7 +29,7 @@ export class VocabComponent implements OnInit {
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-        console.log(event.key, event.keyCode);
+        // console.log(event.key, event.keyCode);
         if (event.key === KEY_CODE.RIGHT_ARROW) {
             this.randomVocab("1");
         }
@@ -41,6 +42,9 @@ export class VocabComponent implements OnInit {
         if (event.keyCode == KEY_CODE.SPACE) {
             this.showPronoun();
             this.showTranslate();
+        }
+        if (event.key == KEY_CODE.LEFT_ARROW) {
+            this.previous();
         }
     }
 
@@ -55,12 +59,26 @@ export class VocabComponent implements OnInit {
         this.translate = "Translate";
     }
 
+    // get random vocabulary
     public randomVocab(flag: string) {
         this.reset();
+        if (this.vocab != null) {
+            localStorage.setItem('previous', JSON.stringify(this.vocab));
+        } else {
+            console.log("No previous vocabulary!");
+        }
         this.service.randomVocab(flag).subscribe(data => {
             this.vocab = data;
             this.handleChange();
         });
+    }
+
+    // back to the previous vocabulary
+    public previous() {
+        let prev = localStorage.getItem('previous');
+        if (prev != null) {
+            console.log('previous: ', JSON.parse(prev));
+        }
     }
 
     public showPronoun() {
