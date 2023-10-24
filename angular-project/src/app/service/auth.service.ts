@@ -30,10 +30,14 @@ export class AuthService {
         let body = JSON.stringify({ username: username, password: password });
         return this.http.post<any>(this.loginUrl, body, { headers: headers, observe: "response" }).pipe(map(
             res => {
-                if (res.headers.has("Authorization")) {
+                console.log(res);
+                console.log(res.status);
+                if (res.status == 200 && res.headers.has("Authorization")) {
+                // if (res.status == 200) {
                     // login successful if there's a jwt token in the response
-                    this.user = JSON.parse(JSON.stringify(res.body));
+                    this.user = new User(); //  JSON.parse(JSON.stringify(res.body));
                     let token = res.headers.get("Authorization");
+                    // console.log(token);
                     localStorage.setItem("token", token);
                     localStorage.setItem("currentUser", JSON.stringify(this.user));
                     this.currentUserSubject.next(this.user);

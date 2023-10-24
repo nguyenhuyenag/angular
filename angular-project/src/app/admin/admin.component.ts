@@ -3,18 +3,18 @@ import { UserService } from '../service/user.service';
 import { User } from '../model/user';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+	selector: 'app-admin',
+	templateUrl: './admin.component.html',
+	styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private service: UserService) { }
+	constructor(private service: UserService) { }
 
-  public listUser: User[] = [];
+	public listUser: User[] = [];
 
-  ngOnInit() {
-    this.service.getAllUser().subscribe(data => this.listUser = data);
-  }
+	ngOnInit() {
+		// this.service.getAllUser().subscribe(data => this.listUser = data);
+	}
 
 }

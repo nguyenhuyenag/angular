@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = true;
         this.authService.login(this.f.username.value, this.f.password.value).subscribe(
             success => {
+                console.log(success);
                 this.router.navigateByUrl(this.returnUrl);
                 this.router.navigateByUrl("admin");
             }, error => {
