@@ -1,0 +1,154 @@
+
+
+- CREATE ANGULAR PROJECT
+
+	- npm install -g @angular/cli
+
+	- ng new <project name>
+
+	- cd <project name>
+
+	- npm run ng serve (run project)
+	
+
+	- ng generate module app-routing --flat --module=app (tạo file app-routing.module.ts nếu chưa có)
+
+	- Nếu đã có project
+
+	- npm install
+
+	- npm update
+
+
+- UPDATE
+
+	- npm install -g @angular/cli@latest
+
+
+- NGX-BOOTSTRAP
+
+	- https://ng-bootstrap.github.io/#/getting-started#installation
+
+	- npm install @ng-bootstrap/ng-bootstrap --save
+
+	- npm install ngx-bootstrap --save
+
+
+- JQUERY
+
+	- npm install jquery @types/jquery
+
+	- Thêm code library vào file index.html
+	
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+	- Khai báo ở component nếu muốn sử dụng (phía dưới import)
+
+		declare var $: any;
+		
+		declare var jQuery: any;
+		
+		// declare var jquery: any;
+	
+
+- GUARD
+
+	- ng g guard auth
+
+
+- Deploy angular app in tomcat
+
+		- Deploy
+
+			+ ng build --prod --base-href=/project_name/
+
+			+ Angular sẽ tạo ra một thư mực `dist/project_name/`
+
+			+ Copy `dist/project_name/` này vào `webapps` của tomcat
+
+		- Server lỗi 404 khi refresh lại trình duyệt
+		
+			+ Sử dụng `{useHash: true}`
+			
+			+ https://stackoverflow.com/a/52684919/7068014
+			
+			+ https://stackoverflow.com/a/63055947/7068014
+
+
+- COMPONENT COMMUNICATION
+
+	- http://jasonwatmore.com/post/2018/06/25/angular-6-communicating-between-components-with-observable-subject
+
+	- arr = BehaviorSubject<Array<any>> = new BehaviorSubject([]);
+
+
+- REACTIVE FORM
+
+	- get f() { return this.loginForm.controls; }
+
+	- this.userForm.get('email').value;
+
+	- this.userForm.controls.email.value;
+
+	- this.userForm.controls['email'].value;
+	
+- Constructor
+
+	constructor(private router: Router) {
+	  this.router.events.subscribe((event) => {
+		if (event instanceof NavigationEnd) {
+		  console.log(event.url);
+		}
+	  });
+	}
+
+- SET PATH
+
+	- Error: 'ng' is not recognized as an internal or external command, operable program or batch file
+
+	- Show hidden files, folders, ...
+
+	- C:\Users\<username>\AppData\Roaming\npm
+
+	- Set PATH to this location
+
+	- Restart windows
+
+	- 'npm install -g @angular/cli' nếu vẫn còn lỗi
+	
+
+- Error -> node_modules/rxjs/internal/types.d.ts
+
+	Step 1 : Go to package.json and modify "rxjs": "^6.0.0" to "rxjs": "6.0.0"
+
+	Step 2 Run npm update in your project.
+
+	There is no need to change the typescript version. (Mine: "typescript": "~2.7.2")
+
+	Edit: If you are using rxjs-compat then you also need to do following in order to fixed the issue.
+	change the rxjs-compat version from "rxjs-compat": "^6.2.2" to "rxjs-compat": "6.2.2"
+
+
+- Don't create strings as objects. It slows down execution speed. The new keyword complicates the code. 
+		This can produce some unexpected results:
+	
+	
+- An unhandled exception occurred: Job name "..getProjectMetadata" does not exist
+
+	- npm i @angular-devkit/build-angular@0.803.24
+
+
+- CHECK VALUE
+
+	if(!something) 			// check null, undefined, false or empty
+
+	if(something == null) 	// check null or undefined
+
+	if(something === null) 	// check only if null
+
+
+- COMPARE
+
+	x === y : so sánh cùng kiểu
+
+	x = y	: so sánh khác kiểu
