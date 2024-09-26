@@ -3,8 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiUrl: "http://localhost:8082"
+    // tslint:disable-next-line:indent
+	production: true,
+    // tslint:disable-next-line:indent
+	apiUrl: 'http://localhost:8082'
 };
 
 /*

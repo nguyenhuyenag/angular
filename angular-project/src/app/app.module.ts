@@ -19,33 +19,33 @@ import { DatepickerI18n, I18n } from './config/datepicker/datepicker.i18n';
 import { DatepickerComponent } from './component/datepicker/datepicker.component';
 
 @NgModule({
-  declarations: [       //  <- component
-    AppComponent,
-    AdminComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    NotFoundComponent,
-    DatepickerComponent
-  ],
-  imports: [            // <- module
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule
-  ],
-  providers: [          // <- service
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    I18n,
-    { provide: NgbDatepickerI18n, useClass: DatepickerI18n },
-    { provide: NgbDateParserFormatter, useClass: DateParserFormatter },
-    AuthInterceptor,
-    UserService
-  ],
-  bootstrap: [AppComponent]
+	declarations: [       //  <- component
+		AppComponent,
+		AdminComponent,
+		HomeComponent,
+		LoginComponent,
+		RegisterComponent,
+		NotFoundComponent,
+		DatepickerComponent
+	],
+	imports: [            // <- module
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		NgbModule
+	],
+	providers: [          // <- service
+		// { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+		I18n,
+		{ provide: NgbDatepickerI18n, useClass: DatepickerI18n },
+		{ provide: NgbDateParserFormatter, useClass: DateParserFormatter },
+		AuthInterceptor,
+		UserService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

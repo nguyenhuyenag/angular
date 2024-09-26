@@ -1,4 +1,4 @@
-# angular priject
+# angular project
 
 	- css của login & register giống nhau
 

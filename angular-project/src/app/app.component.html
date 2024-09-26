@@ -1,21 +1,21 @@
 <div id="main">
-  <!-- menu -->
-  <div *ngIf="currentUser" class="topnav">
-    <ul>
-      <li><a [routerLinkActive]="['is-active']" routerLink="home"><i class="fa fa-fw fa-home"></i> Home</a></li>
-      <li *ngIf="isAdmin"><a [routerLinkActive]="['is-active']" routerLink="admin">Admin</a></li>
-      <li>
-        <a routerLink="{{path}}">Component&nbsp;<i class="fas fa-caret-down"></i></a>
-        <ul class="dropdown-menu">
-          <li *ngFor="let entry of listComponent">
-            <a class="text-left" routerLink="{{entry.path}}">{{entry.name | titlecase }}</a>
-          </li>
-        </ul>
-      </li>
-      <li class="f-right"><a (click)="logout()"><i class="fas fa-sign-in-alt"></i>&nbsp;Logout</a></li>
-    </ul>
-  </div> <!-- end menu -->
-  <div class="router">
-    <router-outlet></router-outlet>
-  </div>
+	<!-- menu -->
+	<div *ngIf="currentUser" class="topnav">
+		<ul>
+			<li><a [routerLinkActive]="['is-active']" routerLink="home"><i class="fa fa-fw fa-home"></i> Home</a></li>
+			<li *ngIf="isAdmin"><a [routerLinkActive]="['is-active']" routerLink="admin">Admin</a></li>
+			<li>
+				<a routerLink="{{path}}">Component&nbsp;<i class="fas fa-caret-down"></i></a>
+				<ul class="dropdown-menu">
+					<li *ngFor="let entry of listComponent">
+						<a class="text-left" routerLink="{{entry.path}}">{{entry.name | titlecase }}</a>
+					</li>
+				</ul>
+			</li>
+			<li class="f-right"><a (click)="logout()"><i class="fas fa-sign-in-alt"></i>&nbsp;Logout</a></li>
+		</ul>
+	</div> <!-- end menu -->
+	<div class="router">
+		<router-outlet></router-outlet>
+	</div>
 </div>
