@@ -33,7 +33,7 @@ export class VocabComponent implements OnInit {
         if (event.key === KEY_CODE.RIGHT_ARROW) {
             this.randomVocab("1");
         }
-        if (event.keyCode == KEY_CODE.P) {
+        if (event.keyCode === KEY_CODE.P) {
             this.showPronoun();
         }
         if (event.keyCode == KEY_CODE.T) {
@@ -102,7 +102,7 @@ export class VocabComponent implements OnInit {
 
     public handleChange() {
         if (!this.flag) {
-            let tmp = this.vocab.word;
+            const tmp = this.vocab.word;
             this.vocab.word = this.vocab.translate;
             this.vocab.translate = tmp;
         }
